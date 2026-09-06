@@ -5,3 +5,15 @@ We used a final int constant to make the code self-documenting by clearly defini
 
 
 When printing an array index that contains an object, Java calls that object's toString() method and displays its output. If the index contains null, Java safely prints the literal word 'null' without throwing an error or exception.
+
+
+_________
+
+
+Compare the primitive double and int types. What happens to the decimal values during an explicit narrowing cast? Why does Java force you to explicitly cast from double to int instead of doing it automatically?
+
+A double holds 64 bits of precision and can store decimal values, whereas an int holds 32 bits and only stores whole numbers.
+
+During a narrowing cast, Java uses truncation which discards everything after the decimal point rather than rounding to the nearest whole number.
+
+Java requires an explicit cast from double to int to protect you from unintended bugs. Since dropping the decimal portion results in data loss, the compiler forces you to explicitly confirm that you know data will be lost and want to proceed anyway.
