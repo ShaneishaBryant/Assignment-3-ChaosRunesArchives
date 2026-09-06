@@ -26,4 +26,15 @@ Explain how two different array elements were able to reflect the same change to
 
 Both ChaosRune objects reflect the same change because they share a reference pointing to the exact same RuneCore object in memory rather than holding separate copies.
 
-Primitive variables differ because they store raw data values directly. When you assign one primitive to another, Java copies the actual value, so modifying one leaves the other unaffected. Reference variables, on the other hand, store a memory address. Assigning a reference variable copies that memory location, causing both variables to point to the exact same object on the heap and share its state."
+Primitive variables differ because they store raw data values directly. When you assign one primitive to another, Java copies the actual value, so modifying one leaves the other unaffected. Reference variables, on the other hand, store a memory address. Assigning a reference variable copies that memory location, causing both variables to point to the exact same object on the heap and share its state.
+
+
+____________
+
+How did your loop guard against null slots? Looking ahead to your presentation, how will this code help you demonstrate array element access, index boundaries, and why array capacity cannot be changed at runtime?
+
+To guard against null slots, my loop performs an explicit null check at the beginning of every iteration before touching any methods on the object.
+
+Array elements store references to objects on the heap, not the actual objects. So record[0] simply holds the memory address pointing to our Opal object.
+Index boundaries and 0-based indexing. Because our array has a capacity of 5, valid positions are 0 through 4. Using i < record.length ensures our loop automatically stops before hitting index 5, protecting us from an ArrayIndexOutOfBoundsException.
+Array's length that's fixed on the heap and cannot be changed once instantiated.
