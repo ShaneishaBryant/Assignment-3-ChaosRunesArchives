@@ -7,9 +7,13 @@ public class Main {
         //declare array then create object and assign
         ChaosRune[] record = new ChaosRune[CAPACITY];
 
-        record[0] = new ChaosRune("Opal",56.78);
-        record[1] = new ChaosRune("Moonstone", 97.23);
-        record[2] = new ChaosRune("Amethyst", 45.23);
+        //declaring and instantiate sharedCore//
+        RuneCore sharedCore;
+        sharedCore = new RuneCore("Aether Well");
+
+        record[0] = new ChaosRune("Opal",56.78, sharedCore);
+        record[1] = new ChaosRune("Moonstone", 97.23, sharedCore);
+        record[2] = new ChaosRune("Amethyst", 45.23, sharedCore);
 
         /*why was this returning the memory hash, ask question in class*/
         System.out.println("---The GAFS Chaos Runes Archieve---");
@@ -33,11 +37,16 @@ public class Main {
                 System.out.println("Energy Level " + i + " --> " + "not record");
             }
         }
+        System.out.println();
 
-        /*System.out.println("Energy Level --> " + record[0] + " " + truncatedEnergy);
-        System.out.println("Energy Level --> " + record[1] + " " + truncatedEnergy);
-        System.out.println("Energy Level --> " + record[1] + " " + truncatedEnergy);*/
+        //testing shared reference - RuneCore and ChaosRune//
+        System.out.println("Record 1 Core BEFORE mutation: " + record[0].getCore().getPowerSource());
+        System.out.println("Record 2 Core BEFORE mutation: " + record[1].getCore().getPowerSource());
 
+
+        //mutate//
+        record[0].getCore().setPowerSource("Void Rift");
+        System.out.println("Record 2 Core AFTER mutation: " + record[1].getCore().getPowerSource());
 
 
     }

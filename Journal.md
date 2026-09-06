@@ -17,3 +17,13 @@ A double holds 64 bits of precision and can store decimal values, whereas an int
 During a narrowing cast, Java uses truncation which discards everything after the decimal point rather than rounding to the nearest whole number.
 
 Java requires an explicit cast from double to int to protect you from unintended bugs. Since dropping the decimal portion results in data loss, the compiler forces you to explicitly confirm that you know data will be lost and want to proceed anyway.
+
+
+_________
+
+
+Explain how two different array elements were able to reflect the same change to the RuneCore. How does a primitive variable holding a value differ from a reference variable holding an object location?
+
+Both ChaosRune objects reflect the same change because they share a reference pointing to the exact same RuneCore object in memory rather than holding separate copies.
+
+Primitive variables differ because they store raw data values directly. When you assign one primitive to another, Java copies the actual value, so modifying one leaves the other unaffected. Reference variables, on the other hand, store a memory address. Assigning a reference variable copies that memory location, causing both variables to point to the exact same object on the heap and share its state."
